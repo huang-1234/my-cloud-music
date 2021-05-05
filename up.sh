@@ -13,4 +13,4 @@ git remote -v
 
 git pull
 
-git push -f 
+git push -f git@github.com:huang-1234/my-cloud-music.git master
