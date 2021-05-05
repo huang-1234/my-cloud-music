@@ -12,8 +12,13 @@ import * as actionTypes from './store/actionCreators';
 const Recommend = (props) => {
 
   // mock数据 bannerList with RecommendList。有了Redux和axios，下面两个静态数据直接丢弃
-/*   
-  const bannerList = [1, 2, 3, 4].map((item) => { imageUrl: "http://p1.music.126.net/ZYLJ2oZn74yUz5x8NBGkVA==/109951164331219056.jpg" })
+  
+  const bannerList = [1, 2, 3, 4].map((item) => {
+    return ({
+      imageUrl: "http://p1.music.126.net/ZYLJ2oZn74yUz5x8NBGkVA==/109951164331219056.jpg"
+    })
+    
+  })
   const recommendList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(item => {
     return {
       id: 1,
@@ -22,9 +27,9 @@ const Recommend = (props) => {
       name: "朴树、许巍、李健、郑钧、老狼、赵雷"
     }
   });
-   */
+  
   // 将上面的静态数据转换为动态数据
-  const { bannerList, recommendList } = props;
+  // const { bannerList, recommendList } = props;
   const { getBannerDataDispatch, getRecommendListDataDispatch } = props;
   
   //useEffect
@@ -34,9 +39,12 @@ const Recommend = (props) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+  
+  const bannerListJS = bannerList ? bannerList : [];
+  const recommendListJS = recommendList ? recommendList : [];
   // 动态的从immutable中得到数据
-  const bannerListJS = bannerList ? bannerList.toJS() : [];
-  const recommendListJS = recommendList ? recommendList.toJS() : [];
+  // const bannerListJS = bannerList ? bannerList.toJS() : [];
+  // const recommendListJS = recommendList ? recommendList.toJS() : [];
   /* 
     刚才我们在components下写的Scroll组件就是在这个调用的。
     另外：
