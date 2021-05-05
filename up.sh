@@ -5,7 +5,8 @@ git init
 
 git add .
 
-git commit -m 'achieve app.Recommend and con.slider in chapter2'
+# git commit -m 'achieve app.Recommend and con.slider in chapter2'
+git commit -m 'achieve redux-data-level'
 
 git remote -v
 
