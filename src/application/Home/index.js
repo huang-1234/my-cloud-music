@@ -27,7 +27,6 @@ function Home(props) {
           <TabItem><span > Rank </span></TabItem>
         </NavLink>
       </Tab>
-      <div>Home</div>
       {renderRoutes(route.routes)}
     </>
   )

@@ -5,10 +5,10 @@ git init
 
 git add .
 
-git commit -m 'first-up-my-cloud-music'
+git commit -m 'achieve app.Recommend and con.slider in chapter2'
 
 git remote -v
 
-git remote add origin git@github.com:huang-1234/my-cloud-music.git
+# git remote add origin git@github.com:huang-1234/my-cloud-music.git
 
 git push
