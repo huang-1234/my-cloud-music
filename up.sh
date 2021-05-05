@@ -11,4 +11,6 @@ git remote -v
 
 # git remote add origin git@github.com:huang-1234/my-cloud-music.git
 
+git pull
+
 git push
