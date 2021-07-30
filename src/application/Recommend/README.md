@@ -156,3 +156,9 @@ import Scroll from '../../baseUI/Scroll'
 import { connect } from "react-redux";
 import * as actionTypes from './store/actionCreators';
 ```
+
+```error
+actionCreators.js中的一个type写错了
+ype: actionTypes.CHANGE_BANNER,
+
+```

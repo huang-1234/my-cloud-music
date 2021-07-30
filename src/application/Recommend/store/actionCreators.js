@@ -7,7 +7,8 @@ import { getBannerRequest, getRecommendListRequest } from '../../../api/request'
 // changeBannerList
 export const changeBannerList = (data) => {
   return ({
-    ype: actionTypes.CHANGE_BANNER,
+    // ype: actionTypes.CHANGE_BANNER,
+    type: actionTypes.CHANGE_BANNER,
     data: fromJS(data),
   })
 }
@@ -20,10 +21,11 @@ export const changeRecommendList = (data) => {
   })
 }
 
-// getBannerList 
+// getBannerList
 export const getBannerList = () => {
   return (dispatch) => {
     getBannerRequest().then((data) => {
+      console.log('bannersdata:', data)
       dispatch(changeBannerList(data.banners));
     }).catch(() => {
       console.log('getting Scroll Picture was wrong');
@@ -31,10 +33,13 @@ export const getBannerList = () => {
   }
 }
 
-// 
+//
 export const getRecommendList = () => {
   return (dispatch) => {
-    getRecommendListRequest().then((data) => {
+    getRecommendListRequest()
+      .then((data) => {
+      // 'data:',
+        console.log('RecommendListdata:',data)
       dispatch(changeRecommendList(data.result));
     }).catch(() => {
       console.log('getting songs data of RecommendList was wrong');

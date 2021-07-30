@@ -1,6 +1,6 @@
 import React, { useEffect} from 'react';
-import Slider from '../../components/slider';
-import RecommendList from '../../components/list';
+import Slider from '../../components/slider/';
+import RecommendList from '../../components/list/';
 // 下面两个是超级顺滑的UI组合
 import { Content } from './style';
 import Scroll from '../../baseUI/Scroll'
@@ -8,11 +8,15 @@ import Scroll from '../../baseUI/Scroll'
 import { connect } from "react-redux";
 import * as actionTypes from './store/actionCreators';
 
+// 引入 forceCheck 方法
+import { forceCheck } from 'react-lazyload';
+
 // ta是用function Recommend (props)
+// 函数组件的props是从最下面的connect中传过来的
 const Recommend = (props) => {
 
   // mock数据 bannerList with RecommendList。有了Redux和axios，下面两个静态数据直接丢弃
-  
+/*   
   const bannerList = [1, 2, 3, 4].map((item) => {
     return ({
       imageUrl: "http://p1.music.126.net/ZYLJ2oZn74yUz5x8NBGkVA==/109951164331219056.jpg"
@@ -27,9 +31,9 @@ const Recommend = (props) => {
       name: "朴树、许巍、李健、郑钧、老狼、赵雷"
     }
   });
-  
+   */
   // 将上面的静态数据转换为动态数据
-  // const { bannerList, recommendList } = props;
+  const { bannerList, recommendList } = props;
   const { getBannerDataDispatch, getRecommendListDataDispatch } = props;
   
   //useEffect
@@ -40,11 +44,11 @@ const Recommend = (props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
-  const bannerListJS = bannerList ? bannerList : [];
-  const recommendListJS = recommendList ? recommendList : [];
+  // const bannerListJS = bannerList ? bannerList : [];
+  // const recommendListJS = recommendList ? recommendList : [];
   // 动态的从immutable中得到数据
-  // const bannerListJS = bannerList ? bannerList.toJS() : [];
-  // const recommendListJS = recommendList ? recommendList.toJS() : [];
+  const bannerListJS = bannerList ? bannerList.toJS() : [];
+  const recommendListJS = recommendList ? recommendList.toJS() : [];
   /* 
     刚才我们在components下写的Scroll组件就是在这个调用的。
     另外：
@@ -54,7 +58,7 @@ const Recommend = (props) => {
   */
   return (
     <Content>
-      <Scroll className="list">
+      <Scroll className="list" onScroll={forceCheck}>
         <div>
           {/* 既然数据都变为动态的了，那肯定这个传过去给相应的组件的时候也要变化形式了 */}
           <Slider bannerList={bannerListJS}></Slider>

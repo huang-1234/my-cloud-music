@@ -10,6 +10,7 @@ const Slider = (props) => {
 
   // 设置轮播图的播放
   useEffect(() => {
+    
     if (bannerList.length && !sliderSwiper) {
       let newSliderSwiper = new Swiper('.slider-container', {
         loop: true,
@@ -21,24 +22,44 @@ const Slider = (props) => {
       });
       setSliderSwiper(newSliderSwiper);
     }
+    console.log('output bannerList in Slider component', bannerList);
+    
   }, [bannerList.length, sliderSwiper]);
+
+  // const payForMusic = (url) => {
+  //   // window.open('url')
+  // }
+  const SliderNodes = bannerList.map((slider) => {
+    return (
+      <div className="swiper-slide" key={slider.imageUrl}>
+        <div className="slider-nav">
+          <img src={slider.imageUrl} alt="recommend" width="100%" height="100%" />
+          {/* <a href={slider.url}></a> */}
+        </div>
+      </div>
+    )
+  })
 
   return (
     <SliderContainer>
       <div className="slider-container">
         <div className="swiper-wrapper">
           {
+            SliderNodes
+            /* 
             bannerList.map((slider) => {
               return (
                 <div className="swiper-slide" key={slider.imageUrl}>
-                  <div className="slider-nav">
+                  <div className="slider-nav" >
                     <img src={slider.imageUrl} alt="recommend" width="100%" height="100%"/>
                   </div>
                 </div>
               )
             })
+             */
+
           }
-          <div className="swiper-pagination"></div>
+          {/* <div className="swiper-pagination"></div> */}
         </div>
       </div>
       <div className="before"></div>
